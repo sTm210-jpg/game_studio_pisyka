@@ -8,7 +8,8 @@ public class create_rain : MonoBehaviour
     public GameObject kaplya;
     public int size_mass_rain;
     public int kol_rain;
-    public GameObject Хуй;
+    public GameObject tochka_gen;
+    public GameObject container_rain;
     private float x;
     private float y;
     private float z;
@@ -16,9 +17,9 @@ public class create_rain : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        x = Хуй.transform.position.x;
-        y = Хуй.transform.position.y;
-        z = Хуй.transform.position.z;
+        x = tochka_gen.transform.position.x;
+        y = tochka_gen.transform.position.y;
+        z = tochka_gen.transform.position.z;
     }
 
     // Update is called once per frame
@@ -28,7 +29,8 @@ public class create_rain : MonoBehaviour
         {
             for (int i = 0; i < 10; i++)
             {
-                Instantiate(kaplya, new Vector3(x, y, z), kaplya.transform.rotation);
+                GameObject s = Instantiate(kaplya, new Vector3(x, y, z), kaplya.transform.rotation);
+                s.name = "Капля " + (kol_rain + i).ToString();
             }
             kol_rain+=10;
         }
